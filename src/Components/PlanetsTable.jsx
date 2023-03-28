@@ -1,14 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import starWarsLogo from '../starWarsLogo.png';
 import '../App.css';
 
 export default function PlanetsTable({ planets }) {
-  console.log(planets);
+  const [textFilter, setFilterByText] = useState('');
+
+  const filteredByTextPlanets = planets
+    .filter((planet) => planet.name.includes(textFilter));
+
   return (
     <div className="table-container">
       <img className="star-wars-logo" src={ starWarsLogo } alt="logo star wars" />
+      <label htmlFor="pesquisa-por-texto">
+        Filtro por texto
+        <input
+          data-testid="name-filter"
+          className="input-filter-by-text"
+          type="text"
+          name="findPlanets"
+          id="pesquisa-por-texto"
+          value={ textFilter }
+          onChange={ ({ target }) => setFilterByText(target.value) }
+        />
+      </label>
       <table>
         <thead>
           <tr>
@@ -28,7 +44,7 @@ export default function PlanetsTable({ planets }) {
           </tr>
         </thead>
         <tbody>
-          { planets.map((planet) => (
+          { filteredByTextPlanets.map((planet) => (
             <tr key={ planet.name }>
               <td>{ planet.name }</td>
               <td>{ planet.rotation_period}</td>

@@ -90,3 +90,10 @@ table {
   display: flex;
   flex-flow: column wrap;
 }
+
+.input-filter-by-text {
+  background-color: #282c34;
+  border-radius: 8px;
+  height: 30px;
+  width: 260px;
+}
