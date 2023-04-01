@@ -1,7 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function FilteredByTextTable({ planets }) {
+function FilteredByNumbersTable({
+  planets, numericFilters, textFilter }) {
+  const filteredByTextPlanets = planets
+    .filter((planet) => planet.name.toLocaleLowerCase()
+      .includes(textFilter.toLocaleLowerCase()));
+
+  let filteredByNumbersPlanets = filteredByTextPlanets;
+
+  numericFilters.forEach(({ columnFilter, operator, number }) => {
+    if (operator === 'maior que') {
+      filteredByNumbersPlanets = filteredByNumbersPlanets
+        .filter((planet) => Number(planet[columnFilter]) > Number(number));
+    }
+    if (operator === 'menor que') {
+      filteredByNumbersPlanets = filteredByNumbersPlanets
+        .filter((planet) => Number(planet[columnFilter]) < Number(number));
+    }
+    if (operator === 'igual a') {
+      filteredByNumbersPlanets = filteredByNumbersPlanets
+        .filter((planet) => Number(planet[columnFilter]) === Number(number));
+    }
+  });
+
   return (
     <div>
       <table>
@@ -23,7 +45,7 @@ function FilteredByTextTable({ planets }) {
           </tr>
         </thead>
         <tbody>
-          { planets.map((planet) => (
+          { filteredByNumbersPlanets.map((planet) => (
             <tr key={ planet.name }>
               <td>{ planet.name }</td>
               <td>{ planet.rotation_period}</td>
@@ -45,8 +67,17 @@ function FilteredByTextTable({ planets }) {
   );
 }
 
-FilteredByTextTable.propTypes = {
+FilteredByNumbersTable.propTypes = {
   planets: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)),
+  columnFilter: PropTypes.string,
+  operator: PropTypes.string,
+  number: PropTypes.string,
+  textFilter: PropTypes.string,
+  numericFilters: PropTypes.arrayOf(PropTypes.shape({
+    columnFilter: PropTypes.string,
+    operator: PropTypes.string,
+    number: PropTypes.string,
+  })),
 }.isRequired;
 
-export default FilteredByTextTable;
+export default FilteredByNumbersTable;

@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function FilteredByTextTable({ planets }) {
+function FilteredByTextTable({ textFilter, planets }) {
+  const filteredByTextPlanets = planets
+    .filter((planet) => planet.name.toLocaleLowerCase()
+      .includes(textFilter.toLocaleLowerCase()));
+
   return (
     <div>
       <table>
@@ -23,7 +27,7 @@ function FilteredByTextTable({ planets }) {
           </tr>
         </thead>
         <tbody>
-          { planets.map((planet) => (
+          { filteredByTextPlanets.map((planet) => (
             <tr key={ planet.name }>
               <td>{ planet.name }</td>
               <td>{ planet.rotation_period}</td>
@@ -47,6 +51,7 @@ function FilteredByTextTable({ planets }) {
 
 FilteredByTextTable.propTypes = {
   planets: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)),
+  textFilter: PropTypes.string,
 }.isRequired;
 
 export default FilteredByTextTable;

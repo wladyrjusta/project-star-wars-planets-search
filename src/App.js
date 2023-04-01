@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 
 import PlanetContext from './context/PlanetsContext';
-import PlanetsTable from './Components/PlanetsTable';
 import './App.css';
+import SetFilters from './Components/SetFilters';
 
 function App() {
   const [planets, setPlanets] = useState([]);
@@ -13,7 +13,7 @@ function App() {
     fetch(setPlanets);
   }, [fetch]);
   return (
-    <PlanetsTable planets={ planets } />
+    <SetFilters planets={ planets } />
   );
 }
 
