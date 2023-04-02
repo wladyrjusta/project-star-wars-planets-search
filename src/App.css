@@ -1,5 +1,7 @@
 body {
   background-color: rgb(33, 32, 32);
+  background-image: url('background2.jpeg');
+  background-size: 600px;
   color: aliceblue;
   display: flex;
 }
@@ -52,18 +54,15 @@ td, th {
 }
 
 td {
+  background-color: rgba(33, 32, 32, 0.858);
+  color: white;
+  font-size: 15px;
   text-align: center;
 }
 
 th {
   background-color: black;
   color: fff;
-}
-
-*td {
-  background-color: rgb(33, 32, 32);
-  color: white;
-  text-align: center;
 }
 
 caption {
@@ -80,8 +79,8 @@ table {
 }
 
 .star-wars-logo {
-  height: 60px;
-  width: 160px;
+  height: 120px;
+  width: 240px;
 }
 
 .table-container {
@@ -94,6 +93,69 @@ table {
 .input-filter-by-text {
   background-color: #282c34;
   border-radius: 8px;
+  color: yellow;
+  font-size: 20px;
   height: 30px;
   width: 260px;
+}
+
+.filters-form {
+  align-content: center;
+  align-items: center;
+  color: yellow;
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  font-weight: 600;
+  height: 50px;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  text-shadow: 0 0 0.2em rgb(6, 6, 6);
+  width: 1200px;
+}
+
+.form-select {
+  background-color: #282c34;
+  border-radius: 8px;
+  color: yellow;
+  display: flex;
+  font-size: 20px;
+  height: 23px;
+  width: 150px;
+}
+
+.filter-btn {
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: yellow;
+  display: flex;
+  flex-direction: row;
+  font-size: 18px;
+  height: 60px;
+  justify-content: center;
+  width: 90px;
+}
+
+.numeric-filters {
+  align-items: center;
+  background-color: #0a0a0ab6;
+  border-radius: 8px;
+  color: yellow;
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  font-weight: 600;
+  height: 40px;
+  justify-content: space-around;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  width: 330px;
+}
+
+.image-delete {
+  background-color: #282c34;
+  height: 20px;
+  padding: 0%;
+  width: 20px;
 }
