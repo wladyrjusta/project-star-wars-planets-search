@@ -1,19 +1,18 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 
-import PlanetContext from './context/PlanetsContext';
 import './App.css';
 import SetFilters from './Components/SetFilters';
+import PlanetsProvider from './context/PlanetsProvider';
+import FiltersProvider from './context/FiltersProvider';
 
 function App() {
-  const [planets, setPlanets] = useState([]);
-  const planetsFecth = useContext(PlanetContext);
-  const { fetch } = planetsFecth;
-
-  useEffect(() => {
-    fetch(setPlanets);
-  }, [fetch]);
   return (
-    <SetFilters planets={ planets } />
+    <PlanetsProvider>
+      <FiltersProvider>
+        <SetFilters />
+      </FiltersProvider>
+    </PlanetsProvider>
+
   );
 }
 

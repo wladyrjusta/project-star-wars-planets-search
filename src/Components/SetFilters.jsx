@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
+import PlanetContext from '../context/PlanetsContext';
 import FormFilters from './FormFilters';
 import FiltersContext from '../context/FiltersContext';
 import starWarsLogo from '../starWarsLogo.png';
@@ -8,7 +9,7 @@ import '../App.css';
 import FilteredByNumbersTable from './FilteredByNumbersTable';
 import NumericFilters from './NumericFilters';
 
-export default function SetFilters({ planets }) {
+export default function SetFilters() {
   const { textFilter,
     setFilterByText,
     columnFilter,
@@ -22,6 +23,8 @@ export default function SetFilters({ planets }) {
     handleClearFilterClick,
     columns,
     clearAllNumericFilters } = useContext(FiltersContext);
+
+  const { planets } = useContext(PlanetContext);
 
   return (
     <div className="table-container">

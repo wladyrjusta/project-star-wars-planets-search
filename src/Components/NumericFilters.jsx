@@ -19,6 +19,7 @@ function NumericFilters({ numericFilters, handleClearFilterClick }) {
           </p>
           <button
             type="button"
+            data-testid="filter-clear-btn"
             onClick={ () => handleClearFilterClick(index) }
           >
             <img
